@@ -95,3 +95,7 @@ pickled_response_hive_tables = (b'\x80\x03crequests.models\nResponse\nq\x00)\x81
                                 b'UJtm4\\ubX\x04\x00\x00\x00bodyq\x96C\x02{}q\x97X\x05\x00\x00\x00hooksq'
                                 b'\x98}q\x99X\x08\x00\x00\x00responseq\x9a]q\x9bsX\x0e\x00\x00\x00_body_positi'
                                 b'onq\x9cNubub.')
+
+pickled_request_empty_data = b'\x80\x03crequests.models\nPreparedReque[1721 chars]Nub.'
+
+

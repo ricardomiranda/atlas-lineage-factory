@@ -15,3 +15,6 @@ class TestIntegrationLineage(unittest.TestCase):
         expected = 200
 
         self.assertEqual(expected, actual)
+
+if __name__ == '__main__':
+    unittest.main()
