@@ -60,7 +60,7 @@ class TestLineage(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_build_request_given_empty_arguments_should_return_empty_object(self):
-        actual = lineage.build_request(atlas_url="", credentials={})
+        actual = lineage.build_request_named_tuple(atlas_url="", credentials={})
         expected = RequestNamedTuple(method="GET",
                                      headers={'Content-Type': 'application/json',
                                               'Accept': 'application/json;charset=UTF-8'},
@@ -86,7 +86,7 @@ class TestLineage(unittest.TestCase):
                    "guid": -1}
         atlas_url = "http://localhost:21000/api/atlas/types"
         credentials = {"user": "admin:admin"}
-        actual = lineage.build_request(atlas_url=atlas_url,
+        actual = lineage.build_request_named_tuple(atlas_url=atlas_url,
                                        payload=payload, credentials=credentials)
         expected = RequestNamedTuple(method="GET",
                                      headers={'Content-Type': 'application/json',
@@ -97,23 +97,26 @@ class TestLineage(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_request_call_given_empty_request_named_tuple_should_return_request_object(self):
-        actual = lineage.prepare_request(
-                lineage.build_request(atlas_url="http://localhost:21000/api/atlas/entities?type=hive_table"))
+        actual = pickle.dumps(lineage.prepare_request(
+                lineage.build_request_named_tuple(atlas_url="http://localhost:21000/api/atlas/entities?type=hive_table")))
 
-        expected = pickle.loads(pickled_objects.pickled_request_hive_tables)
-
-        self.assertEqual(
-                [expected.method, expected.url, expected.headers, expected.body],
-                [actual.method, actual.url, actual.headers, actual.body])
-
-    def test_create_lineage_prepare_empty_data(self):
-        actual = lineage.create_lineage_prepare(
-                atlas_url="http://localhost:21000/api/atlas", description="", inputs={}, operation_type="",
-                name="", outputs={}, qualified_name="", type_name="")
-        
-        expected = pickle.loads(pickled_objects.pickled_request_empty_data)
+        expected = 222
+        # expected = pickle.loads(pickled_objects.pickled_request_hive_tables)
 
         self.assertEqual(expected, actual)
+#        self.assertEqual(
+#                [expected.method, expected.url, expected.headers, expected.body],
+#                [actual.method, actual.url, actual.headers, actual.body])
+
+#    def test_create_lineage_prepare_empty_data(self):
+#        actual = pickle.dumps(lineage.create_lineage_prepare(
+#            atlas_url="http://localhost:21000/api/atlas/entities?type=hive_table", description="iiiiiiiiiiiii", inputs={"a":"a", "b":"b" }, operation_type="iiiii",
+#                name="iii", outputs={"a":"a", "b":"b"}, qualified_name="iiii", type_name="iiiiii"))
+        
+#        expected = 111
+        # expected = pickle.loads(pickled_objects.pickled_request_empty_data)
+
+#        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

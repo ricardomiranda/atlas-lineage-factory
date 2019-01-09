@@ -2,6 +2,9 @@
 bin/
 include/
 
+# resource files to ignore
+/resources/auth.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
