@@ -96,6 +96,29 @@ pickled_response_hive_tables = (b'\x80\x03crequests.models\nResponse\nq\x00)\x81
                                 b'\x98}q\x99X\x08\x00\x00\x00responseq\x9a]q\x9bsX\x0e\x00\x00\x00_body_positi'
                                 b'onq\x9cNubub.')
 
-pickled_request_empty_data = b'\x80\x03crequests.models\nPreparedReque[1721 chars]Nub.'
-
+pickled_request_empty_data = (b'\x80\x03crequests.models\nPreparedRequest\nq\x00)\x81q\x01}q\x02(X\x06\x00'
+                              b'\x00\x00methodq\x03X\x04\x00\x00\x00POSTq\x04X\x03\x00\x00\x00urlq\x05X'
+                              b' \x00\x00\x00http://localhost:21000/api/atlasq\x06X\x07\x00\x00\x00heade'
+                              b'rsq\x07crequests.structures\nCaseInsensitiveDict\nq\x08)\x81q\t}q\nX\x06'
+                              b'\x00\x00\x00_storeq\x0bccollections\nOrderedDict\nq\x0c)Rq\r(X'
+                              b'\x0c\x00\x00\x00content-typeq\x0eX\x0c\x00\x00\x00Content-Typeq\x0fX\x10\x00'
+                              b'\x00\x00application/jsonq\x10\x86q\x11X\x06\x00\x00\x00acceptq\x12'
+                              b'X\x06\x00\x00\x00Acceptq\x13X\x1e\x00\x00\x00application/json;charset=UTF-8'
+                              b'q\x14\x86q\x15X\x0e\x00\x00\x00content-lengthq\x16X\x0e\x00\x00\x00Content-L'
+                              b'engthq\x17X\x03\x00\x00\x00134q\x18\x86q\x19X\r\x00\x00\x00authorizati'
+                              b'onq\x1aX\r\x00\x00\x00Authorizationq\x1bX\x1e\x00\x00\x00Basic YWRtaW46aG9yd'
+                              b'G9ud29ya3Mxq\x1c\x86q\x1dusbX\x08\x00\x00\x00_cookiesq\x1ecrequests.cook'
+                              b'ies\nRequestsCookieJar\nq\x1f)\x81q }q!(X\x07\x00\x00\x00_policyq"chttp.cook'
+                              b'iejar\nDefaultCookiePolicy\nq#)\x81q$}q%(X\x08\x00\x00\x00netscapeq&\x88'
+                              b"X\x07\x00\x00\x00rfc2965q'\x89X\x13\x00\x00\x00rfc2109_as_netscapeq(NX\x0c"
+                              b'\x00\x00\x00hide_cookie2q)\x89X\r\x00\x00\x00strict_domainq*\x89X'
+                              b'\x1b\x00\x00\x00strict_rfc2965_unverifiableq+\x88X\x16\x00\x00\x00strict_ns'
+                              b'_unverifiableq,\x89X\x10\x00\x00\x00strict_ns_domainq-K\x00X\x1c\x00'
+                              b'\x00\x00strict_ns_set_initial_dollarq.\x89X\x12\x00\x00\x00strict_ns_set_'
+                              b'pathq/\x89X\x10\x00\x00\x00_blocked_domainsq0)X\x10\x00\x00\x00_allowed_dom'
+                              b'ainsq1NX\x04\x00\x00\x00_nowq2J\xf3\x006\\ubh\x1e}q3h2J\xf3\x006\\ubX'
+                              b'\x04\x00\x00\x00bodyq4C\x86{"description": "", "inputs": [{}], "operationTy'
+                              b'pe": "", "name": "", "outputs": [{}], "qualifiedName": "", "typeName": "", "'
+                              b'guid": -1}q5X\x05\x00\x00\x00hooksq6}q7X\x08\x00\x00\x00responseq8]q9sX\x0e'
+                              b'\x00\x00\x00_body_positionq:Nub.')
 
