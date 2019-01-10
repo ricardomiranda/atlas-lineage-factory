@@ -6,24 +6,34 @@ RequestNamedTuple = namedtuple("requestnamedtuple", "method headers atlas_url pa
 
 
 def create_lineage(atlas_url: str, description: str, inputs: [dict], operation_type: str, name: str, outputs: [dict],
-                   qualified_name: str, type_name: str, credentials=("", "")):
-    prepared_request = create_lineage_prepare(atlas_url=atlas_url, description=description, inputs=inputs,
-                                              operation_type=operation_type, name=name, outputs=outputs,
-                                              qualified_name=qualified_name,
-                                              type_name=type_name,
-                                              credentials=credentials)
+                   type_name="hive_tables_flow_process", credentials=("", "")):
+    prepared_request = create_lineage_prepare(
+        atlas_url=atlas_url,
+        description=description,
+        inputs=inputs,
+        operation_type=operation_type,
+        name=name,
+        outputs=outputs,
+        type_name=type_name,
+        credentials=credentials)
     response = create_lineage_send(prepared_request)
     return create_lineage_prossess(response)
 
 
 def create_lineage_prepare(atlas_url: str, description: str, inputs: [dict], operation_type: str, name: str,
-                           outputs: [dict], qualified_name: str, type_name: str, credentials=("", "")) -> PreparedRequest:
+                           outputs: [dict], type_name: str,
+                           credentials=("", "")) -> PreparedRequest:
     return prepare_request(
         build_request_named_tuple(
-            atlas_url=atlas_url,
-            payload=create_lineage_payload(description=description, inputs=inputs, operation_type=operation_type,
-                                           name=name, outputs=outputs, qualified_name=qualified_name,
-                                           type_name=type_name),
+            atlas_url=atlas_url + "/api/atlas/v2/entity",
+            payload=create_lineage_payload(
+                description=description,
+                inputs=inputs,
+                operation_type=operation_type,
+                name=name,
+                outputs=outputs,
+                qualified_name=type_name + '.' + operation_type + '.' + name,
+                type_name=type_name),
             credentials=credentials,
             method="POST"))
 

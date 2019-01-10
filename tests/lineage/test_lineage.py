@@ -134,15 +134,20 @@ class TestLineage(unittest.TestCase):
             [expected.method, expected.url, expected.headers, expected.body],
             [actual.method, actual.url, actual.headers, actual.body])
 
-    def test_create_lineage_prepare_simple_lineage(self):
+    def test_create_lineage_prepare_error_01(self):
+        # actual = pickle.dumps(lineage.create_lineage_prepare(
         actual = lineage.create_lineage_prepare(
-            atlas_url="http://localhost:21000/api/atlas",
             description="Data flow form raw to canonical data model",
-            inputs=[{}], operation_type="",
-            name="", outputs=[{}], qualified_name="", type_name="")
+            inputs=[{}],
+            operation_type="Spark",
+            name="data_mapping",
+            outputs=[{}],
+            atlas_url="http://localhost:21000/api/atlas/v2/entity",
+            type_name="hive_tables_flow_process")
 
-        expected = pickle.loads(pickled_objects.pickled_request_empty_data)
+        expected = pickle.loads(pickled_objects.pickled_request_simple_lineage)
 
+        # self.assertEqual(expected, actual)
         self.assertEqual(
             [expected.method, expected.url, expected.headers, expected.body],
             [actual.method, actual.url, actual.headers, actual.body])
