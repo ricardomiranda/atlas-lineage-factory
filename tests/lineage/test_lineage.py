@@ -20,11 +20,6 @@ def credentials():
 class TestLineage(unittest.TestCase):
 
     def test_payload_given_empty_arguments_should_return_valid_dict(self):
-        auth_file = pathlib.Path(pathlib.Path(__file__).parent, "../../resources/auth.json")
-        with auth_file.open() as f:
-            auth = f.read()
-        a = json.loads(auth)["auth"]
-
         actual = lineage.create_lineage_payload(
             description="",
             inputs=[{}],
@@ -125,8 +120,14 @@ class TestLineage(unittest.TestCase):
 
     def test_create_lineage_prepare_empty_data(self):
         actual = lineage.create_lineage_prepare(
-            atlas_url="http://localhost:21000/api/atlas", description="", inputs=[{}], operation_type="",
-            name="", outputs=[{}], qualified_name="", type_name="", credentials=credentials())
+            atlas_url="http://localhost:21000/api/atlas",
+            description="",
+            inputs=[{}],
+            operation_type="",
+            name="",
+            outputs=[{}],
+            type_name="",
+            credentials=credentials())
 
         expected = pickle.loads(pickled_objects.pickled_request_empty_data)
 
@@ -142,10 +143,12 @@ class TestLineage(unittest.TestCase):
             operation_type="Spark",
             name="data_mapping",
             outputs=[{}],
-            atlas_url="http://localhost:21000/api/atlas/v2/entity",
+            atlas_url="http://localhost:21000/api/atlas",
             type_name="hive_tables_flow_process")
 
-        expected = pickle.loads(pickled_objects.pickled_request_simple_lineage)
+        # )
+
+        expected = pickle.loads(pickled_objects.pickled_request_error_01)
 
         # self.assertEqual(expected, actual)
         self.assertEqual(
